@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E4ECE562108F3570085C3BB /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ECE552108F3570085C3BB /* Reachability.swift */; };
 		3E553D352104907D00E83026 /* FactsTableViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E553D342104907D00E83026 /* FactsTableViewPresenterTests.swift */; };
 		3E8C8FF121035EC800D752F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C8FF021035EC800D752F5 /* AppDelegate.swift */; };
 		3E8C8FF321035EC800D752F5 /* FactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C8FF221035EC800D752F5 /* FactsTableViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		1F874DDDD9E4B5B19194D21A /* Pods_FactsAboutCanada.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FactsAboutCanada.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E4ECE552108F3570085C3BB /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		3E553D342104907D00E83026 /* FactsTableViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsTableViewPresenterTests.swift; sourceTree = "<group>"; };
 		3E8C8FED21035EC700D752F5 /* FactsAboutCanada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FactsAboutCanada.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8C8FF021035EC800D752F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E4ECE542108F3320085C3BB /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				3E4ECE552108F3570085C3BB /* Reachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		3E8C8FE421035EC700D752F5 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +121,7 @@
 		3E8C8FEF21035EC700D752F5 /* FactsAboutCanada */ = {
 			isa = PBXGroup;
 			children = (
+				3E4ECE542108F3320085C3BB /* Reachability */,
 				3ECC77DF2103CCCF003EC71B /* MVP */,
 				3ED9199E21037D3000BB2785 /* Model */,
 				3ED919982103663100BB2785 /* NetworkManager */,
@@ -376,6 +387,7 @@
 			files = (
 				3ED9199A2103665C00BB2785 /* NetworkManager.swift in Sources */,
 				3E8C8FF321035EC800D752F5 /* FactsTableViewController.swift in Sources */,
+				3E4ECE562108F3570085C3BB /* Reachability.swift in Sources */,
 				3ECC77E12103D4C0003EC71B /* FactsTableViewPresenter.swift in Sources */,
 				3E8C8FF121035EC800D752F5 /* AppDelegate.swift in Sources */,
 				3ED919A021037DB600BB2785 /* Fact.swift in Sources */,

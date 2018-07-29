@@ -20,10 +20,14 @@ protocol NetWorkManagerProtocol {
 class NetworkManager: NetWorkManagerProtocol {
     static let sharedInstance = NetworkManager()
     private var facts = [Fact]()
-    
+
     func fetchAllFacts(completion: @escaping ([Fact]?, String?) -> Void) {
         Alamofire.request(URL_GET_DATA).responseString { responseData in
-            if let data = responseData.result.value?.data(using: String.Encoding.utf8) {
+            guard let responseDataValue = responseData.result.value  else {
+                completion(nil,nil)
+                return
+            }
+            if let data = responseDataValue.data(using: String.Encoding.utf8) {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]
                     guard let jsonData = json else {return completion(nil, nil)}
@@ -42,7 +46,10 @@ class NetworkManager: NetWorkManagerProtocol {
                     completion(self.facts, title)
                     
                 }
-                catch {}
+                catch {
+                    completion(nil, nil)
+
+                }
             }
         }
     }

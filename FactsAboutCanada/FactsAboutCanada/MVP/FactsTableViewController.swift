@@ -12,6 +12,7 @@ protocol FactsTableViewControllerProtocol: class {
     func updateCell(with image: UIImage,at indexPath: IndexPath)
     func updateTableView(with facts: [Fact]?)
     func updateNavigationBarTitle(with title: String?)
+    func showConnetionRequiredAlert(message: String)
 }
 
 class FactsTableViewController: UIViewController, FactsTableViewControllerProtocol {
@@ -80,7 +81,15 @@ class FactsTableViewController: UIViewController, FactsTableViewControllerProtoc
         cell?.imageView?.image = image
         cell?.setNeedsLayout()
     }
+
+    func showConnetionRequiredAlert(message: String) {
+        let alertController = UIAlertController(title: "Sorry", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+
 }
+
 extension FactsTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

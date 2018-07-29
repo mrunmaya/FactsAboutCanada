@@ -25,11 +25,20 @@ class FactsTableViewPresenter: FactsTableViewPresenterProtocol {
     
     // Get Facts Data using NetworkManager API
     func getFactsFromServer() {
+        guard Reachability.isConnectedToNetwork() else {
+            self.factsViewControler?.showConnetionRequiredAlert(message:"Internet Connection is required")
+            return
+        }
+
         DispatchQueue.global(qos: .userInteractive).async() {
             self.networkManager?.fetchAllFacts {[weak self] facts,title  in
+                guard let facts = facts else {
+                     self?.factsViewControler?.showConnetionRequiredAlert(message:"We couldn't get any facts")
+                    return
+                }
                 DispatchQueue.main.async {
-                    self?.factsViewControler?.updateTableView(with: facts)
                     self?.factsViewControler?.updateNavigationBarTitle(with: title)
+                    self?.factsViewControler?.updateTableView(with: facts)
                 }
             }
         }

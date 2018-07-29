@@ -10,9 +10,12 @@ import XCTest
 @testable import FactsAboutCanada
 
 class FactsTableViewControllerStub:  FactsTableViewControllerProtocol {
+
+
     var updateCellCalled = false
     var updateTableViewCalled = false
     var updateNavigationBarTitleCalled = false
+    var showConnetionRequiredAlertCalled = false
     var asyncExpectation: XCTestExpectation?
     var navigationTitle = "Before Facts"
     var facts: [Fact]?
@@ -36,6 +39,9 @@ class FactsTableViewControllerStub:  FactsTableViewControllerProtocol {
         updateNavigationBarTitleCalled = true
         navigationTitle = "After facts"
         asyncExpectation?.fulfill()
+    }
+    func showConnetionRequiredAlert(message: String) {
+        showConnetionRequiredAlertCalled = true
     }
 }
 
