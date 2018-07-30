@@ -25,39 +25,45 @@ class FactsTableViewController: UIViewController, FactsTableViewControllerProtoc
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpCustomTableView()
-        setCustomNavigationBar(with: "About Canada")
         presenter = FactsTableViewPresenter(factsViewController: self, networkManager: NetworkManager.sharedInstance)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setUpCustomTableView()
+        setUpNavigation()
         presenter?.getFactsFromServer()
     }
 
     // Setup TableView
     func setUpCustomTableView() {
-        let topBarHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
-        factsTableView = UITableView(frame: CGRect(x: 0, y: topBarHeight+44 , width: self.view.frame.width, height: self.view.frame.height - topBarHeight - 44))
-        factsTableView?.register(UITableViewCell.self, forCellReuseIdentifier: "tableViewCell")
-        factsTableView?.dataSource = self
-        factsTableView?.delegate = self
+        factsTableView = UITableView(frame: CGRect(x: 0, y: 0 , width: self.view.frame.width, height: self.view.frame.height ))
         if let tableview = factsTableView {
             self.view.addSubview(tableview)
         }
+
+        factsTableView?.translatesAutoresizingMaskIntoConstraints = false
+        factsTableView?.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
+        factsTableView?.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
+        factsTableView?.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
+        factsTableView?.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
+
+        factsTableView?.register(FactsTableViewCell.self, forCellReuseIdentifier: "tableViewCell")
+        factsTableView?.dataSource = self
+        factsTableView?.delegate = self
+
     }
-    
+
+    func setUpNavigation() {
+        navigationItem.title = "About Canada"
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        let refreshItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refresh))
+        navigationItem.rightBarButtonItem = refreshItem
+    }
+
     // Setup top navigation Bar
     func setCustomNavigationBar(with title: String?) {
-        let topBarHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
-        
-        let screenSize: CGRect = UIScreen.main.bounds
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: topBarHeight, width: screenSize.width, height: 44))
-        if let title = title {
-            let navItem = UINavigationItem(title: title)
-            let refreshItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: nil, action: #selector(refresh))
-            navItem.rightBarButtonItem = refreshItem
-            navBar.setItems([navItem], animated: false)
-        }
-
-        navBar.backgroundColor = UIColor.blue
-        self.view.addSubview(navBar)
+        navigationItem.title = title
     }
 
     @objc func refresh() {
@@ -73,7 +79,7 @@ class FactsTableViewController: UIViewController, FactsTableViewControllerProtoc
 
     func updateNavigationBarTitle(with title: String?) {
         guard let title = title else { return }
-        setCustomNavigationBar(with: title)
+        self.navigationItem.title = title
     }
     
     func updateCell(with image: UIImage,at indexPath: IndexPath) {
@@ -87,7 +93,6 @@ class FactsTableViewController: UIViewController, FactsTableViewControllerProtoc
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
-
 }
 
 extension FactsTableViewController: UITableViewDataSource {
@@ -98,17 +103,17 @@ extension FactsTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle,
-                                   reuseIdentifier: "tableViewCell")
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! FactsTableViewCell
+
         guard let facts = self.facts else { return cell}
-        
+
         if let title = facts[indexPath.row].title {
-            cell.textLabel?.text = title
+            cell.factTitleLabel.text = title
         }
         
         if let description = facts[indexPath.row].description {
-            cell.detailTextLabel?.text = description
+            cell.factDetailLabel.text = description
         }
         
         if let imageURL = facts[indexPath.row].imageUrl {
@@ -119,5 +124,9 @@ extension FactsTableViewController: UITableViewDataSource {
     }
 }
 
-extension FactsTableViewController: UITableViewDelegate {}
+extension FactsTableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+}
 

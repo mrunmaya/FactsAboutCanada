@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E4ECE562108F3570085C3BB /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ECE552108F3570085C3BB /* Reachability.swift */; };
 		3E553D352104907D00E83026 /* FactsTableViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E553D342104907D00E83026 /* FactsTableViewPresenterTests.swift */; };
+		3E5A3AA721099D3600DD6221 /* FactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5A3AA621099D3600DD6221 /* FactsTableViewCell.swift */; };
 		3E8C8FF121035EC800D752F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C8FF021035EC800D752F5 /* AppDelegate.swift */; };
 		3E8C8FF321035EC800D752F5 /* FactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C8FF221035EC800D752F5 /* FactsTableViewController.swift */; };
 		3E8C8FF621035EC800D752F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8C8FF421035EC800D752F5 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		1F874DDDD9E4B5B19194D21A /* Pods_FactsAboutCanada.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FactsAboutCanada.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4ECE552108F3570085C3BB /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		3E553D342104907D00E83026 /* FactsTableViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsTableViewPresenterTests.swift; sourceTree = "<group>"; };
+		3E5A3AA621099D3600DD6221 /* FactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsTableViewCell.swift; sourceTree = "<group>"; };
 		3E8C8FED21035EC700D752F5 /* FactsAboutCanada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FactsAboutCanada.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8C8FF021035EC800D752F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E8C8FF221035EC800D752F5 /* FactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsTableViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				3E8C8FF221035EC800D752F5 /* FactsTableViewController.swift */,
 				3ECC77E02103D4C0003EC71B /* FactsTableViewPresenter.swift */,
+				3E5A3AA621099D3600DD6221 /* FactsTableViewCell.swift */,
 			);
 			path = MVP;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			files = (
 				3ED9199A2103665C00BB2785 /* NetworkManager.swift in Sources */,
 				3E8C8FF321035EC800D752F5 /* FactsTableViewController.swift in Sources */,
+				3E5A3AA721099D3600DD6221 /* FactsTableViewCell.swift in Sources */,
 				3E4ECE562108F3570085C3BB /* Reachability.swift in Sources */,
 				3ECC77E12103D4C0003EC71B /* FactsTableViewPresenter.swift in Sources */,
 				3E8C8FF121035EC800D752F5 /* AppDelegate.swift in Sources */,

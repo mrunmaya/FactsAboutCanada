@@ -101,14 +101,14 @@ class FactsTableViewControllerTests: XCTestCase {
         XCTAssertEqual(noOfRows2, 2)
         
         let indexPath = IndexPath(row: 0, section: 0)
-        let cell1 = sut.factsTableView?.cellForRow(at: indexPath)
-        XCTAssertEqual(cell1?.textLabel?.text, "test title")
-        XCTAssertEqual(cell1?.detailTextLabel?.text, "Some Description")
+        let cell1 = sut.factsTableView?.cellForRow(at: indexPath) as? FactsTableViewCell
+        XCTAssertEqual(cell1?.factTitleLabel.text, "test title")
+        XCTAssertEqual(cell1?.factDetailLabel.text, "Some Description")
         
         let indexPath2 = IndexPath(row: 1, section: 0)
-        let cell2 = sut.factsTableView?.cellForRow(at: indexPath2)
-        XCTAssertEqual(cell2?.textLabel?.text, "test title 2")
-        XCTAssertEqual(cell2?.detailTextLabel?.text, "Some Description2")
+        let cell2 = sut.factsTableView?.cellForRow(at: indexPath2) as? FactsTableViewCell
+        XCTAssertEqual(cell2?.factTitleLabel.text, "test title 2")
+        XCTAssertEqual(cell2?.factDetailLabel.text, "Some Description2")
         
     }
     
@@ -129,9 +129,9 @@ class FactsTableViewControllerTests: XCTestCase {
         let indexPath = IndexPath(row: 0, section: 0)
         let image1 = getImageWithColor(color: .blue, size: CGSize.init(width: 20, height: 20))
         sut.updateCell(with: image1, at: indexPath)
-        let cell1 = sut.factsTableView?.cellForRow(at: indexPath)
-        XCTAssertEqual(cell1?.textLabel?.text, "test title")
-        XCTAssertEqual(cell1?.detailTextLabel?.text, "Some Description")
+        let cell1 = sut.factsTableView?.cellForRow(at: indexPath) as? FactsTableViewCell
+        XCTAssertEqual(cell1?.factTitleLabel.text, "test title")
+        XCTAssertEqual(cell1?.factDetailLabel.text, "Some Description")
         let cellImage = cell1?.imageView?.image
         XCTAssertEqual(cellImage, image1)
         
